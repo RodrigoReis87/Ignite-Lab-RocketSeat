@@ -23,7 +23,7 @@ interface GetLessonBySlugResponse {
     lesson: {
         title: string;
         videoId: string;
-        decription: string;
+        description: string;
         teacher: {
             bio: string;
             avatarURL: string;
@@ -69,7 +69,7 @@ export function Video(props: VideoProps) {
                             {data.lesson.title}
                         </h1>
                         <p className="mt-4 text-gray-200 leading-relaxed">
-                            {data.lesson.decription}
+                            {data.lesson.description}
                         </p>
 
                         <div className="flex items-center gap-4 mt-6">
