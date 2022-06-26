@@ -2,6 +2,9 @@ import { DefaultUi, Player, Youtube } from "@vime/react";
 import { CaretRight, DiscordLogo, FileArrowDown, Lightning } from "phosphor-react";
 import '@vime/core/themes/default.css'
 import { useGetLessonBySlugQuery } from "../graphql/generated";
+import { isPast } from "date-fns";
+import { Footer } from "./Footer";
+import gif from "../../src/assets/em-breve-glitch.gif"
 
 interface VideoProps {
     lessonSlug: string;
@@ -22,16 +25,26 @@ export function Video(props: VideoProps) {
         )
     }
 
+    const isLessonAvailable = isPast(new Date(data.lesson.availableAt));
+
     return (
         <div className="flex-1">
-            <div className="bg-black flex justify-center">
-                <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-                    <Player>
-                        <Youtube videoId={data.lesson.videoId} />
-                        <DefaultUi />
-                    </Player>
+            {isLessonAvailable ? (
+                <div className="bg-black flex justify-center">
+                    <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
+                        <Player>
+                            <Youtube videoId={data.lesson.videoId} />
+                            <DefaultUi />
+                        </Player>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="bg-black flex justify-center">
+                    <div className="">
+                        <img src={gif} alt="" />
+                    </div>
+                </div>
+            )}
 
             <div className="p-8 max-w-[1100px] mx-auto">
                 <div className="flex items-start gap-16">
@@ -102,6 +115,10 @@ export function Video(props: VideoProps) {
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div className="pt-8 pl-8 pr-8 flex flex-1">
+                <Footer />
             </div>
         </div>
     )
