@@ -30,13 +30,12 @@ export function Subscribe() {
         <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
             <div className="w-full items-center justify-between mt-20 mx-auto 
             mobile:inline mobile:max-w-[460px]
-            tablet:inline tablet:max-w-[460px] 
             laptop:flex laptop:max-w-[844px]
             desktop:flex desktop:max-w-[1100px]">
-                <div className="tablet:max-w-[640px] 
-                laptop:max-w-[1024px] 
-                desktop:max-w-[1280px]">
-                    <Logo />
+                <div className="tablet:max-w-[640px] laptop:max-w-[1024px] desktop:max-w-[1280px] mobile:p-2">
+                    <div className="mobile:flex mobile:justify-center laptop:justify-start">
+                        <Logo />
+                    </div>
 
                     <h1 className="mt-8 text-[2.5rem] leading-tight 
                         mobile:text-center tablet:text-center laptop:text-left desktop:text-left">
